@@ -1,0 +1,157 @@
+:root{
+    --bg1: #fff8f2;
+    --bg2: #fff0e1;
+    --gold: #b8860b;
+    --muted: rgba(31,41,55,0.65);
+    --card-bg: rgba(255,255,255,0.72);
+    --glass-border: rgba(255,255,255,0.5);
+  }
+  
+  /* Page background */
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family: 'Poppins', sans-serif;
+    background-image:
+      radial-gradient(1200px 400px at 10% 10%, rgba(255,255,255,0.35), transparent 10%),
+      radial-gradient(1000px 300px at 90% 90%, rgba(255,248,235,0.25), transparent 12%),
+      linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%),
+      repeating-linear-gradient(45deg, rgba(0,0,0,0.01) 0px, rgba(0,0,0,0.01) 1px, transparent 1px, transparent 4px);
+    background-attachment: fixed;
+    color: var(--muted);
+  }
+  
+  /* Gold glow ornaments */
+  .ornament {
+    position:fixed;
+    pointer-events:none;
+    mix-blend-mode: multiply;
+    z-index:0;
+  }
+  .ornament.top-left{
+    top:-30px; left:-30px;
+    width:320px; height:320px;
+    background: radial-gradient(circle at 30% 30%, rgba(184,134,11,0.14), transparent 25%),
+                conic-gradient(from 120deg at 50% 50%, rgba(184,134,11,0.06), transparent 40%);
+    border-radius:50%;
+    filter: blur(28px) saturate(110%);
+    transform: rotate(-12deg);
+  }
+  .ornament.bottom-right{
+    bottom:-40px; right:-40px;
+    width:420px; height:420px;
+    background: radial-gradient(circle at 70% 70%, rgba(184,134,11,0.12), transparent 25%),
+                conic-gradient(from 240deg at 50% 50%, rgba(184,134,11,0.04), transparent 40%);
+    border-radius:50%;
+    filter: blur(34px) saturate(120%);
+  }
+  
+  /* Hero section */
+  .hero {
+    position:relative;
+    z-index:1;
+    padding:48px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:calc(100vh - 40px);
+  }
+  
+  /* Main showcase card */
+  .showcase-card{
+    width:100%;
+    max-width:1180px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,255,255,0.70));
+    border-radius:18px;
+    padding:28px;
+    box-shadow: 0 10px 40px rgba(14,20,30,0.12);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(6px) saturate(120%);
+  }
+  
+  h2.title {
+    font-family: 'Playfair Display', serif;
+    font-size:28px;
+    margin:6px 0 6px;
+    color: var(--gold);
+    letter-spacing:1px;
+    text-align:center;
+    font-weight:600;
+  }
+  
+  p.subtitle{
+    text-align:center;
+    color: #6b5a3a;
+    margin-bottom:18px;
+    font-size:14px;
+  }
+  
+  /* Carousel */
+  .carousel-inner img {
+    height:480px;
+    object-fit:cover;
+    border-radius:12px;
+  }
+  
+  .carousel{
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow: 0 10px 30px rgba(20,20,20,0.08);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  
+  /* Controls */
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon{
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.25));
+    background-size: 2.25rem 2.25rem;
+    width:48px; height:48px;
+  }
+  .carousel-control-prev,
+  .carousel-control-next{
+    width:64px;
+    height:64px;
+    top:50%;
+    transform:translateY(-50%);
+    background: rgba(255,255,255,0.6);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid rgba(0,0,0,0.03);
+  }
+  
+  /* Meta info */
+  .carousel-meta{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:center;
+    margin-top:14px;
+    flex-wrap:wrap;
+  }
+  .price-pill{
+    background: linear-gradient(90deg, rgba(184,134,11,0.12), rgba(184,134,11,0.06));
+    border-radius:999px;
+    padding:8px 14px;
+    font-weight:600;
+    color: #6b4f17;
+    border:1px solid rgba(184,134,11,0.12);
+    font-size:14px;
+  }
+  .btn-shop{
+    background: linear-gradient(90deg, var(--gold), #f0c14b);
+    color:#fff;
+    border: none;
+    padding:8px 16px;
+    border-radius:8px;
+    font-weight:600;
+    box-shadow: 0 6px 18px rgba(184,134,11,0.12);
+  }
+  
+  /* Responsive */
+  @media (max-width: 767px){
+    .carousel-inner img { height:320px; }
+    .showcase-card { padding:18px; }
+  }
+  

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Card UI - Enhanced Neon Style</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      min-height: 100vh;
+      padding-top: 90px;
+      overflow-x: hidden;
+    }
+
+    .navbar-custom {
+      background: linear-gradient(90deg, #141E30, #243B55);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .navbar-brand {
+      color: #FFD700 !important;
+      font-weight: 800;
+      letter-spacing: 1px;
+      font-size: 1.6rem;
+      text-shadow: 0 0 10px #FFD700;
+      transition: 0.4s;
+    }
+
+    .navbar-brand:hover {
+      color: #fff !important;
+      text-shadow: 0 0 15px #FFD700, 0 0 25px #FFD700;
+    }
+
+    .nav-link {
+      color: #f0f0f0 !important;
+      margin-right: 18px;
+      position: relative;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 2px;
+      background-color: #FFD700;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #FFD700 !important;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    
+    .movie-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    .movie-card {
+      background: #1b1b1b;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .movie-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+    }
+
+    .movie-card img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .movie-card:hover img {
+      transform: scale(1.1);
+      filter: brightness(0.8);
+    }
+
+    .movie-info {
+      padding: 18px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(5px);
+    }
+
+    .movie-info h3 {
+      font-size: 1.2rem;
+      color: #FFD700;
+      margin-bottom: 8px;
+      font-weight: 700;
+      text-shadow: 0 0 5px #FFD700;
+    }
+
+    .movie-info p {
+      color: #ccc;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .rating {
+      color: #FF9800;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+  
+    .description {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 25px;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.4s ease;
+      border-radius: 15px;
+    }
+
+    .movie-card:hover .description {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .description p {
+      color: #f1f1f1;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+
+    @media (max-width: 768px) {
+      .navbar-brand {
+        font-size: 1.2rem;
+      }
+      .movie-card img {
+        height: 280px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .movie-container {
+        padding: 20px 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="#">🎬 MovieVerse</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Genres</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Top Rated</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  
+  <div class="movie-container">
+
+    <div class="card movie-card">
+      <img src="https://pdcmultimedia.site/wp-content/uploads/2025/06/movie-media-cover-name-_Animated-Adventure-for-All-Ages.jpg" alt="Animated Adventure">
+      <div class="movie-info">
+        <h3>ANIMATED ADVENTURE</h3>
+        <p>Action, Adventure</p>
+        <p class="rating">⭐ 8.5</p>
+      </div>
+      <div class="description">
+        <p>A thrilling adventure of heroes saving the world from unimaginable dangers.</p>
+      </div>
+    </div>
+
+    <div class="card movie-card">
+      <img src="https://m.media-amazon.com/images/M/MV5BMTc4NjEyODE1OV5BMl5BanBnXkFtZTcwMjYzNTkxNA@@.V1_FMjpg_UX1000.jpg" alt="Rango">
+      <div class="movie-info">
+        <h3>RANGO</h3>
+        <p>Drama, Thriller</p>
+        <p class="rating">⭐ 7.9</p>
+      </div>
+      <div class="description">
+        <p>A gripping drama with unexpected twists that keep you on the edge of your seat.</p>
+      </div>
+    </div>
+
+    <div class="card movie-card">
+      <img src="https://m.media-amazon.com/images/M/MV5BMTAxNDYxMjg0MjNeQTJeQWpwZ15BbWU3MDcyNTk2OTM@.V1.jpg" alt="Tongled">
+      <div class="movie-info">
+        <h3>TONGLED</h3>
+        <p>Comedy, Romance</p>
+        <p class="rating">⭐ 8.2</p>
+      </div>
+      <div class="description">
+        <p>A heartwarming romantic comedy full of laughs and emotional moments.</p>
+      </div>
+    </div>
+
+    <div class="card movie-card">
+      <img src="https://m.media-amazon.com/images/M/MV5BN2Q1Njc0NzUtY2YxNy00ZmIyLWEzZjMtNzkyNjc0ZTE4YzllXkEyXkFqcGc@.V1.jpg" alt="Valley Lanterns">
+      <div class="movie-info">
+        <h3>VALLEY LANTERNS</h3>
+        <p>Sci-Fi, Fantasy</p>
+        <p class="rating">⭐ 9.0</p>
+      </div>
+      <div class="description">
+        <p>Explore a futuristic world where technology and magic collide in epic battles.</p>
+      </div>
+    </div>
+
+    <div class="card movie-card">
+      <img src="https://m.media-amazon.com/images/M/MV5BYWUwNWE1YjctMDYyOC00YmJjLWFkZTMtYzhjNmI3NTI4ZTMxXkEyXkFqcGc@.V1.jpg" alt="Stitch Head">
+      <div class="movie-info">
+        <h3>STITCH HEAD</h3>
+        <p>Horror, Thriller</p>
+        <p class="rating">⭐ 7.5</p>
+      </div>
+      <div class="description">
+        <p>Terrifying events unfold in a haunted mansion that hides deadly secrets.</p>
+      </div>
+    </div>
+
+    <div class="card movie-card">
+      <img src="https://assets.gqindia.com/photos/5d6510b6b7f16b00088a9e68/1:1/w_722,h_722,c_limit/Animated%20movies%20Netflix.jpg" alt="The Little Prince">
+      <div class="movie-info">
+        <h3>THE LITTLE PRINCE</h3>
+        <p>Animation, Family</p>
+        <p class="rating">⭐ 8.8</p>
+      </div>
+      <div class="description">
+        <p>A fun-filled animated journey with colorful characters and adventures.</p>
+      </div>
+    </div>
+
+    <div class="card movie-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4wMTu23QSBrfMJE0sook68zsnU8OFnSQADQ&s" alt="Bad Guys">
+      <div class="movie-info">
+        <h3>BAD GUYS</h3>
+        <p>Action, Crime</p>
+        <p class="rating">⭐ 7.8</p>
+      </div>
+      <div class="description">
+        <p>An action-packed crime story with suspense, betrayal, and justice.</p>
+      </div>
+    </div>
+
+    <div class="card movie-card">
+      <img src="https://resizing.flixster.com/oz7XPjD7a2ky3DZuX_X7kWFsv-k=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p9330057_v_v13_au.jpg" alt="Epic">
+      <div class="movie-info">
+        <h3>EPIC</h3>
+        <p>Documentary</p>
+        <p class="rating">⭐ 9.2</p>
+      </div>
+      <div class="description">
+        <p>Insightful documentary exploring fascinating real-world stories.</p>
+      </div>
+    </div>
+
+    <div class="card movie-card">
+      <img src="https://i.pinimg.com/236x/cd/1f/d9/cd1fd9ffb2aa9758283e1b89d861c39f.jpg" alt="Wish">
+      <div class="movie-info">
+        <h3>WISH</h3>
+        <p>Adventure, Family</p>
+        <p class="rating">⭐ 8.0</p>
+      </div>
+      <div class="description">
+        <p>A heartwarming family adventure with exciting journeys and discoveries.</p>
+      </div>
+    </div>
+
+    <div class="card movie-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGc6grilnJrO3Ldl4vLSgP2kTPNSc6R7ilQw&s" alt="Elio">
+      <div class="movie-info">
+        <h3>ELIO</h3>
+        <p>Fantasy, Action</p>
+        <p class="rating">⭐ 8.7</p>
+      </div>
+      <div class="description">
+        <p>Epic fantasy battles and heroic quests in a magical universe.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
